@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `bookingphoto` (
   `phonenumber` varchar(40) ,
   `size` varchar(20) ,
   `city` varchar(25) ,
-  `numberofphoto(approx)` varchar(10),
+  `numberofphoto` varchar(10),
   `totalamount` varchar(20)  ,
   `amountpaid` varchar(20)  ,
   `dueamount` varchar(20)  ,

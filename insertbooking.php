@@ -17,7 +17,7 @@ $comment=$_POST['comment'];
 
  
  
-mysqli_query($connect,"INSERT INTO `bookingphoto` (`name`, `bookingdate`, `functiondate`, `occasiontype`, `phonenumber`, `size`, `city`, `numberofphoto(approx)`, `totalamount`, `amountpaid`, `dueamount`, `comment`) 
+mysqli_query($connect,"INSERT INTO `bookingphoto` (`name`, `bookingdate`, `functiondate`, `occasiontype`, `phonenumber`, `size`, `city`, `numberofphoto`, `totalamount`, `amountpaid`, `dueamount`, `comment`) 
 	 VALUES ('$name','$bookingdate','$functiondate','$occasion','$phoneno','$size','$city','$numpic','$totalamount','$advanceamount','$dueamount','$comment')");
 
 				

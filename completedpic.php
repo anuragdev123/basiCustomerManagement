@@ -106,7 +106,7 @@
        ?>
         <div>
     
-<button id="cmd" onclick="pdfP()">generate PDF</button>
+
 
            
          <table id="table" style="font-size: 15px;width: 1088px" class="table table-hover table table-responsive">
@@ -307,6 +307,208 @@
              ?>
               </tbody>
              </table>
+
+              <?php
+        $con1=  mysqli_connect("localhost", "root", "", "nandnistudiodata");
+
+        if(!$con)
+       {
+           die('not connected');
+       }
+            $con1=  mysqli_query($con1, "select * from bookingphoto ORDER BY bookingphoto.id DESC ");
+
+       ?>
+
+         <table  id="table1" style="font-size: 15px;width: 1088px;display: none" class="table table-hover table table-responsive">
+         <thead>
+           <tr>
+           <th>id</th>
+                    <th>Name</th>
+                     <th>Booking date</th>
+                    <th>function date</th>
+                    <th>occasion type</th>
+                    <th>Phone Number</th>
+                     <th>no. of phpto</th>
+                     <!-- <th>clicked gender</th> -->
+                     <th>size</th>
+                    <th>amount paid</th>
+                     <th>due amt</th>
+                     <th>total amount</th>
+                        <th>comment</th>
+                        <th>edit</th>
+                        <th>delete</th>
+
+            </tr>
+</thead>
+<tbody>
+        <?php
+
+
+             while($row1 =  mysqli_fetch_array($con1))
+
+             {
+                 ?>
+
+            <tr>
+                <td class="edit"><?php echo $row1['id']; ?></td>
+                <td class="edit"><?php echo $row1['name']; ?>,<br><?php echo $row['city']; ?></td>
+                <td class="edit"><?php echo $row1['bookingdate'] ;?></td>
+                <td class="edit"><?php echo $row1['functiondate']; ?></td>
+                <td class="edit"><?php echo $row1['occasiontype'] ;?></td>
+                
+                <td class="edit"><?php echo $row1['phonenumber'] ;?></td>
+                <td class="edit"><?php echo $row1['numberofphoto'] ;?></td>
+                <td class="edit"><?php echo $row1['size'] ;?></td>
+                <td class="edit"><?php echo $row1['amountpaid'] ;?></td>
+                <td class="edit"><?php echo $row1['dueamount']; ?></td>
+                <td class="edit"><?php echo $row1['totalamount'] ;?></td>
+                
+                <td class="edit"><?php echo $row1['comment'] ;?></td>
+                  <td >
+                         <div class="modal fade" id="btn1<?php echo $row1['id']; ?>" role="dialog">
+            <div class="modal-dialog modal-sm vertical-align-center">
+              <div class="modal-content" style="
+    width: 344px;
+">
+                <div class="modal-header" style="
+    background-color: #0eb493;
+">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 
+                        <h2 style="color: white;">Booking details</h2>
+                </div>
+                <div class="modal-body">
+                       <form action="editbooking.php" method="post">
+                    
+                        
+        <input type="hidden" name="id" value="<?php echo $row1['id']; ?>">
+     <br> <strong><span>name</span> </strong>  <br> <input type="text" name="name" value="<?php echo $row1['name']; ?>">
+     <br> <strong><span>city</span> </strong>  <br> <input type="text" name="city" value="<?php echo $row1['city']; ?>">
+      <br> <strong><span>function date</span> </strong>  <br> <input type="text" name="gender" value="<?php echo $row1['functiondate']; ?>">
+      <br> <strong><span>booking date</span> </strong>  <br> <input type="text" name="clickeddate" value="<?php echo $row1['bookingdate'] ;?>">
+      <br> <strong><span>size</span> </strong> <br> <input type="text" name="size" value="<?php echo $row1['size']; ?>">
+       <br> <strong><span>phone no</span> </strong> <br><input type="text" name="phoneno" value="<?php echo $row1['phonenumber']; ?>">
+        <br> <strong><span>occasion type</span> </strong> <br><input type="text" name="type" value="<?php echo $row1['occasiontype']; ?>">
+       <br> <strong><span>number of pic</span> </strong> <br><input type="text" name="numpic" value="<?php echo $row1['numberofphoto']; ?>">
+       <br> <strong><span>total amount</span> </strong> <br><input id="totalamt" type="text" name="totalamt" value="<?php echo $row1['totalamount']; ?>" onchange="amount()">
+       <br> <strong><span>advance amount</span> </strong><br> <input id="advpaid" type="text" name="advpaid" value="<?php echo $row1['amountpaid']; ?>" onchange="amount()">
+     <br> <strong><span>due amount</span> </strong><br>  <input id="dueamt" type="text" name="dueamt" value="<?php echo $row1['dueamount']; ?>">
+      <br> <strong><span>comment</span> </strong> <br> <input type="text" name="comment" value="<?php echo $row1['comment']; ?>">
+       <br><br> <input type="submit" class="btn btn-primary" name="submit3" value="update">
+    </form>
+
+                
+
+              
+              </div>
+            </div>
+        </div>
+        </div>
+        <!-- recipt -->
+
+                    <div class="modal fade" id="rec<?php echo $row['id']; ?>" role="dialog">
+          <!--   <div class="modal-dialog modal-lg vertical-align-center"> -->
+   <!--            <div class="modal-content" 
+"> -->
+                <div class="modal-body ">
+              <div class="row">
+        <div id="print<?php echo $row['id']; ?>" class="  well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="
+    width: 307px;
+    /* height: 206px; */
+">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong>Nandni Studio, Rath</strong>
+                        <br>
+                        Near Bada Mandir
+                        <br>
+                       9936210492
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <p>
+                        <em><?php echo $row['clickdate']; ?></em>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                   
+                    <h3>Receipt</h3>
+                </div>
+                <h5><?php echo $row['name']; ?></h5>
+                </span>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>#</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-md-9"><em><?php echo $row['size']; ?></em></h4></td>
+                            <td class="col-md-1" style="text-align: center"><?php echo $row['numberofphoto']; ?></td>
+                            <td class="col-md-1 text-center"><?php echo $row['totalamount']; ?></td>
+                        </tr>
+                      <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td class="text-right">
+                            <p>
+                                <strong>Advance: </strong>
+                            </p>
+                            <p>
+                                <strong>Due: </strong>
+                            </p></td>
+                            <td class="text-center">
+                            <p>
+                                <strong><?php echo $row['amountpaid']; ?></strong>
+                            </p>
+                            <p>
+                                <strong><?php echo $row['dueamount']; ?></strong>
+                            </p></td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+                <small style="
+    padding: 85px;
+">Signature</small>
+            </div>
+        </div>
+         <button onclick="printDiv(<?php echo $row['id']; ?>)">print</button>
+    </div>
+              </div>
+            <!-- </div> -->
+        <!-- </div> -->
+
+        </div>              
+              
+                   
+        <!-- recipt end -->
+    
+     <button  class="btn btn-success" id="btn" onclick="editData1(<?php echo $row1['id']; ?>)">Edit</button>
+      <div ><i style="
+    color: #0eb493;
+" class="fa fa-print fa-lg" onclick="printRecipt(<?php echo $row['id']; ?>)"></i></div> 
+</td>
+         <td >
+           <form action='deletebook.php?id="<?php echo $row1['id']; ?>"' onSubmit="return confirm('delete this entry?')" method="post">
+        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+        <input type="submit" class="btn btn-danger" name="submit" value="delete">
+    </form>
+</td>
+               
+            </tr>
+
+        <?php
+             }
+             ?>
+              </tbody>
+             </table>
              
 </div>
             </div>
@@ -346,6 +548,7 @@
         <script type="text/javascript">
     $(document).ready(function() {
   $('#table').DataTable({ "order": []});
+  //$('#table1').DataTable({ "order": []});
   function getstatus(){
     $.ajax({
             url:'getstatus.php',
@@ -382,6 +585,9 @@ var jsonObj = $.parseJSON('[' + str + ']');
 
 var editData = function(id){
   $("#btn"+id).modal('show');
+};
+var editData1 = function(id){
+  $("#btn1"+id).modal('show');
 };
 function status(id,status){
     
