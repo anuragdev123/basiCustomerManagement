@@ -52,3 +52,12 @@ CREATE TABLE IF NOT EXISTS `phonebook` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
+CREATE TABLE IF NOT EXISTS `status` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `c_id` int ,
+  `status` varchar(40) NOT NULL,
+ 
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+

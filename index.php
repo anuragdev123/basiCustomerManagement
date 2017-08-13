@@ -38,8 +38,9 @@
 			<img src="img/preloader.gif" alt="Preloader">
 		</div>
 		<!-- end preloader -->
-		
-      <!--   Fixed Navigation
+
+        <!-- 
+        Fixed Navigation
         ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
@@ -299,7 +300,7 @@
        	
 		
 		<section id="facts" class="facts">
-			<div class="parallax-overlay">
+			<div style="padding-bottom: 309px;" class="parallax-overlay">
 				<div class="container">
 					<div class="row number-counters">
 						
@@ -310,12 +311,11 @@
 						
 						
 						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-							<div class="counters-item">
+							<!-- <div class="counters-item">
 								<i class="fa fa-users fa-3x"></i> 
 							<strong data-to="10000">0</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
 								 <p>Satisfied Customer</p>
-							</div>
+							</div> -->
 						</div> 
 						
 				
@@ -363,7 +363,6 @@
 								</div>
 								
 								<div class="input-group">
-
 									<input type="submit" id="form-submit" class="pull-right" value="Save number">
 								</div>
 							</form>

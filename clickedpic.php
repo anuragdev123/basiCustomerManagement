@@ -1,6 +1,8 @@
 <!DOCTYPE html>
- <html >
+ 
     <head>
+
+  <link rel="stylesheet" href="css/sweetalert.css">
      <style>
             
             #normalform{
@@ -129,7 +131,7 @@
          <div class="form-group">
                 <div class="name">
                    phone number
-                    <input type="text" class="form-control" name="phoneno" id="phoneno"  autocomplete="off"/>
+                    <input type="text" class="form-control" name="phoneno" id="phoneno"  autocomplete="off" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="+91"/>
                 </div> 
             </div><br>
 
@@ -148,16 +150,16 @@
        clicked(gen)
         <br>
         <div class="radio">
-            <label><input type="radio" name="gender" value="male"  /> Male</label>
+            <label><input type="radio" name="gender" value="M"  /> Male</label>
 
-            <label><input type="radio" name="gender" value="female" /> Female</label>
+            <label><input type="radio" name="gender" value="F" /> Female</label>
         </div>
     </div>
     <br>
      <div class="form-group">
                 <div class="name">
                    city
-                    <input type="text" class="form-control" name="city" id="city"  />
+                    <input type="text" class="form-control" name="city" id="city" value="rath" />
                 </div> 
             </div>
     <br>
@@ -187,21 +189,21 @@
              <div class="form-group">
                 <div class="name">
                    total amount:
-                    <input type="text" class="form-control" name="totalamt" id="totalamt" autocomplete="off" />
+                    <input type="text" class="form-control" name="totalamt" id="totalamt" autocomplete="off" onchange ="amount()" />
                 </div> 
             </div>
             <br>
              <div class="form-group">
                 <div class="name">
                    advanced paid
-                    <input type="text" class="form-control" name="advpaid" id="advpaid"  autocomplete="off"/>
+                    <input type="text" class="form-control" name="advpaid" id="advpaid"  autocomplete="off" onchange="amount()"/>
                 </div> 
             </div>
             <br>
              <div class="form-group">
                 <div class="name">
                    due amount
-                    <input type="text" class="form-control" name="dueamt" id="dueamt"  autocomplete="off"/>
+                    <input type="text" class="form-control" name="dueamt" id="dueamt"  autocomplete="off"  >
                 </div> 
             </div>
             <br>
@@ -318,7 +320,7 @@
              <div class="form-group">
                 <div class="name">
                    advanced paid
-                    <input type="text" class="form-control" name="advpaid" id="advpaid"  autocomplete="off"/>
+                    <input type="text" class="form-control" name="advpaid" id="advpaid"  autocomplete="off"  />
                 </div> 
             </div>
             <br>
@@ -364,6 +366,7 @@
         </script>
 
                     <script src="js/jquery-1.11.1.min.js"></script>
+                    <script src="js/sweetalert-dev.js"></script>
         <!-- Single Page Nav -->
         <script src="js/jquery.singlePageNav.min.js"></script>
         <!-- Twitter Bootstrap -->
@@ -400,6 +403,14 @@
               }
             );
             wow.init();
+
+
+            var amount=function(){
+            var totalAmt=document.getElementById("totalamt").value;
+                var advAmt=document.getElementById("advpaid").value;
+                var dueamt= totalAmt-advAmt;
+                document.getElementById("dueamt").value=dueamt;
+            } 
         </script> 
         <!-- Custom Functions -->
         <script src="js/custom.js"></script>
